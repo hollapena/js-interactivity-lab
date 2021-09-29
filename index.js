@@ -8,6 +8,7 @@ function addMovie(event){
     const movie = document.createElement('li');
     const movieTitle= document.createElement('span');
     movieTitle.textContent=inputField;
+    message.textContent=`${inputField} has been added to the list!`;
     movieTitle.addEventListener('click', crossOffMovie);
     movie.appendChild(movieTitle);
     const deleteBtn=document.createElement('button');
@@ -16,7 +17,7 @@ function addMovie(event){
     movie.appendChild(deleteBtn);
     const list = document.querySelector('ul').appendChild(movie);
     document.querySelector('input').value='';
-    
+    revealMessage();
 }
 
 document.querySelector('form').addEventListener('submit', addMovie);
