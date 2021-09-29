@@ -23,16 +23,25 @@ document.querySelector('form').addEventListener('submit', addMovie);
 
 function deleteMovie(event){
     event.target.parentNode.remove();
-    message.textContent='Movie Deleted!';
+    const theMovie =event.target.parentNode.firstChild.textContent;
+    message.textContent=`${theMovie} has been Deleted!`;
+    revealMessage();
 }
 
 function crossOffMovie(event){
     event.target.classList.toggle('checked');
+    const theMovie=event.target.textContent;
     if(event.target.classList.contains('checked')){
-        message.textContent='Movie Watched!';
+        message.textContent=`${theMovie} has been Watched!`;
     }else{
-        message.textContent='Movie added back to the list!';
+        message.textContent=`${theMovie} has been added back to the list!`;
     }
+    revealMessage();
+}
+
+function revealMessage(){
+    message.classList.remove('hide');
+    setTimeout(()=>{message.classList.add('hide')},1000);
     
 }
 
